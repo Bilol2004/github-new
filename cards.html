@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 800px;
+            background-color: yellow;
+        }
+        .row{
+            display: flex;
+            flex-direction: column;
+            width: 35%;
+            background-color: white;
+
+        }
+        .cards:hover{
+            background-color: lightgrey;
+        }
+        .cards{
+            border: 1px solid black;
+        }
+        .cards1{
+            border: 3px solid black;
+            /* width:600px; */
+            transform: scale(1.1);
+            background-color: white;
+        }
+        .hider{
+            display: none;
+        }
+        .shower{
+            display: block;
+            height: 100px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="row">
+            <div class="col">
+                <div :class="son==1 ? 'cards1' : 'cards'" v-on:click="start1()">
+                    <h1>1. hotel facilities</h1>
+                    <div  :class="son==1 ? 'shower' : 'hider'" id="hider1">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, nobis. Cumque, sunt! Aliquid, maiores assumenda?
+                    </div>
+                </div>
+                <div :class="son==2 ? 'cards1' : 'cards'" v-on:click="start2()">
+                    <h1>1. hotel facilities</h1>
+                    <div :class="son==2 ? 'shower' : 'hider'" id="hider2">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, nobis. Cumque, sunt! Aliquid, maiores assumenda?
+                    </div>
+                </div>
+                <div :class="son==3 ? 'cards1' : 'cards'" v-on:click="start3()">
+                    <h1>1. hotel facilities</h1>
+                    <div  id="hider3" :class="son==3 ? 'shower' : 'hider'">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, nobis. Cumque, sunt! Aliquid, maiores assumenda?
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        var card1 = document.getElementById("hider1")
+        var card2 = document.getElementById("hider2")
+        var card3 = document.getElementById("hider3")
+         const App = {
+			data(){
+				return{
+                    son:0,
+                    display:"none",
+
+				}
+			},
+                methods:{
+                start1(event){
+                    this.son=1;
+                },
+                start2(){
+                    this.son=2;
+                },
+                start3(){
+                    this.son=3;
+                }
+                // start1(){
+                //         card1.style.display=this.display
+                // },
+			    // start(){
+                //     if(this.son==1){
+                //         card1.style.display=this.display
+                //     }
+                //     else if(this.son==2){
+                //         card2.style.display=this.display
+                //     }
+                //     else if(this.son==3){
+                //         card3.style.display=this.display
+                //     }
+                // }
+            }
+			
+
+		}
+
+		Vue.createApp(App).mount('#container')
+    </script>
+</body>
+</html>

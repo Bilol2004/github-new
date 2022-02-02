@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+    font-family: 'Roboto', sans-serif;}
+    .container{
+        height: 700PX;
+        width: 100%;
+        background-color: yellow;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .row{
+        height: 100px;
+        width:350px;
+        background-color: white;
+
+    }
+    .col{
+        height: 100px;
+        width:100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #side{
+        height: 700px;
+        width:300px;
+        background-color: white;
+        position: absolute;
+        top: 0px;
+        left: -300px;
+    }
+    #side2{
+        height: 700px;
+        width:300px;
+        background-color: white;
+        position: absolute;
+        top: 0px;
+        left: -300px;
+    }
+    .trans{
+        animation: anim 1s 1;
+
+    }
+    .trans2{
+        animation: anim2 1s 1;
+
+    }
+    .news{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+@keyframes anim {
+    0%{
+        left: -300px;
+    }
+    100%{
+        left:0px;
+    }
+}
+@keyframes anim2 {
+    0%{
+        left: 0px;
+    }
+    100%{
+        left:-300px;
+    }
+}
+.black{
+    position: absolute;
+    top: 0;
+    left: 300px;
+    height: 700px;
+    width: 1200px;
+    background-color: black;
+    opacity:0.3;
+    z-index: -1;
+}
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container" class="container container-fluid">
+        
+        <div class="black" id="black"  onclick=" son=-1, hide2(),hide1()">
+
+        </div>
+        <div class="row">
+            
+            <div class="col">
+                <div>
+                    <button class="btn-info"onclick="son=1, start()">search</button>
+                    <button class="btn-info" onclick="son=1, start2()">run</button>
+                </div>
+            </div>
+        </div>
+        <div class="news"id="side">
+            <div> 
+                Whoa! You found me! <br>
+                <button  class="btn-info"  onclick="son=-1,hide1()">Hide back</button>
+            </div>
+        </div>
+
+        <div class="news" id="side2">
+            <div> 
+                Please don't run!
+                <br>
+                <button  class="btn-info" onclick=" son=-1, hide2()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let side = document.getElementById("side");
+        let son = 0
+        let black = document.getElementById("black")
+        function start(){
+            if(son==1){
+                black.style.zIndex = "5 "
+            }
+            side.style.left="0"
+            side.classList.remove("trans2")
+            side.classList.add("trans")
+
+
+        }
+        function hide1(){
+            if(son==-1){
+                black.style.zIndex =" -1 "
+                son=0
+            }            
+            side.style.left="-300px"
+            side.classList.remove("trans")
+            side.classList.add("trans2")
+        }
+        // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        let side2 = document.getElementById("side2")
+        function start2(){
+            if(son==1){
+                black.style.zIndex = '2'; 
+            }
+            side2.style.left="0"
+            side2.classList.remove("trans2")
+            side2.classList.add("trans")
+        }
+        function hide2(){
+            if(son==-1){
+                black.style.zIndex = "-1 "
+                son=0
+
+            }
+            side2.style.left="-300px"
+            side2.classList.remove("trans")
+            side2.classList.add("trans2")
+        }
+
+    </script>
+</body>
+</html>
